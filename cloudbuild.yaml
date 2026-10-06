@@ -1,0 +1,10 @@
+steps:
+  - name: 'python:3.9'
+    entrypoint: 'python'
+    args: ['app.py']
+
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'rsync', '-r', 'web-pages/', 'gs://YOUR-BUCKET-NAME']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
